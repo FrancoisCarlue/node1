@@ -79,7 +79,7 @@ app.get('/infosImage', (req, res) => {
     var i = 1;
     fs.readdir("/uploads", (err, files) => {
         console.log("bien entré dans readdir")
-        jsonImages[nbImages]=files.length;
+        jsonImages["nbImages"]=files.length;
         files.forEach(file => {
             console.log("bien entré dans forEach")
             var newImage = "image"+i;

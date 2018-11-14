@@ -26,6 +26,8 @@ app.post('/handlePost',(req,res) => {
     res.send(JSON.stringify({"Resultat":myImage}));
     console.log(myImage);
     });
+
+
 //Handle multi part post request
 app.post(
     "/file-upload",
@@ -57,6 +59,8 @@ app.post(
         }
     }
 );
+
+
 //When I receive the socket message:
 io.on('refresh-msg', function (socket) {
     console.log("oui");
@@ -88,7 +92,7 @@ app.get('/', (req, res) => {
 
 
 //Define port
-const PORT = process.env.PORT || 10410;
+const PORT = process.env.PORT || 10424;
 
 //Run the server using express
 app.listen(PORT, () => {

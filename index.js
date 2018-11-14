@@ -72,6 +72,12 @@ app.get("/image.jpg", (req, res) => {
     res.render("handlePost")
 });
 
+app.get('/recupererImage', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    fs.readdir(dir, (err, files) => {
+        res.send(JSON.stringify({"NombreImages":files.length}));
+});
+
 app.post('/authenticationPlayer1',(req,res) => {
     var barcodePlayer1=req.body.barcodeSent;
     res.setHeader('Content-Type', 'application/json');

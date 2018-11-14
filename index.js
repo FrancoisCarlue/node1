@@ -77,7 +77,7 @@ app.get('/infosImage', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     var jsonImages = {"nbImages":0,"listURL":{},"listNames":{}};
     var i = 1;
-    fs.readdir("/uploads", (err, files) => {
+    fs.readdir('./uploads', (err, files) => {
         console.log("bien entré dans readdir")
         jsonImages["nbImages"]=files.length;
         files.forEach(file => {

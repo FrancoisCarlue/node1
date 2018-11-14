@@ -6,6 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const reload = require("reload");
 const http = require("http").Server(app);
+const URLserver = "http://node.melisse.ovh1.ec-m.fr/"
 var io=require('socket.io')(http);
 const upload = multer({
     dest: "./uploads"
@@ -72,12 +73,22 @@ app.get("/image.jpg", (req, res) => {
     res.render("handlePost")
 });
 
-app.get('/recupererImage', (req, res) => {
+app.get('/infosImage', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
+    var jsonImages = {"nbImages":0,"listURL":{},"listNames":{}};
+    var i = 1;
     fs.readdir("./uploads", (err, files) => {
-        res.send(JSON.stringify({"NombreImages":files.length}));
+        jsonImages[nbImages]=files.length;
+        files.forEach(file => {
+            var newImage = "image"+i;
+            var newImageName = file;
+            jsonImages.listNames[newImage] = newImageName;
+            jsonImages.listURL[newImage] = URLserver+newImageName;
+        });
     });
 
+
+    res.send(JSON.stringify(jsonImages));
 });
 
 app.post('/authenticationPlayer1',(req,res) => {

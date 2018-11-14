@@ -74,8 +74,10 @@ app.get("/image.jpg", (req, res) => {
 
 app.get('/recupererImage', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    fs.readdir(dir, (err, files) => {
+    fs.readdir("./uploads", (err, files) => {
         res.send(JSON.stringify({"NombreImages":files.length}));
+    });
+
 });
 
 app.post('/authenticationPlayer1',(req,res) => {

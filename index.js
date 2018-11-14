@@ -84,8 +84,11 @@ app.get('/infosImage', (req, res) => {
             console.log("bien entré dans forEach")
             var newImage = "image"+i;
             var newImageName = file;
+            console.log(newImage);
+            console.log(newImageName);
             jsonImages.listNames[newImage] = newImageName;
             jsonImages.listURL[newImage] = URLserver+newImageName;
+            console.log(jsonImages);
             i = i+1;
         });
     });

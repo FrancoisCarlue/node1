@@ -91,8 +91,9 @@ app.get('/infosImage', (req, res) => {
             console.log(jsonImages);
             i = i+1;
         });
+        res.send(JSON.stringify(jsonImages));
     });
-    res.send(JSON.stringify(jsonImages));
+
 });
 
 app.post('/authenticationPlayer1',(req,res) => {

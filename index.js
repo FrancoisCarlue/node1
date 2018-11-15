@@ -75,19 +75,15 @@ app.get("/image.jpg", (req, res) => {
 
 app.get('/infosImage', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    var jsonImages = {"nbImages":0,"listURL":{},"listNames":{}};
+    var jsonImages = {"nbImages":0,"listNames":{},"listURL":{}};
     var i = 1;
     fs.readdir('./uploads', (err, files) => {
-        console.log("bien entré dans readdir")
         jsonImages["nbImages"]=files.length;
         files.forEach(file => {
-            console.log("bien entré dans forEach")
             var newImage = "image"+i;
             var newImageName = file;
-            console.log(newImage);
-            console.log(newImageName);
             jsonImages.listNames[newImage] = newImageName;
-            jsonImages.listURL[newImage] = URLserver+newImageName;
+            jsonImages.listURL[newImage] = URLserver+"uploads/"+newImageName;
             console.log(jsonImages);
             i = i+1;
         });

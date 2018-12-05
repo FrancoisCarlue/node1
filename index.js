@@ -112,7 +112,14 @@ module.exports = (logger) => {
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify({"Resultat":"text received"}));
         console.log("text received");
-        
+
+        var stream = fs.createWriteStream("postedText.txt");
+        stream.once('open', function(fd) {
+            stream.write("My first row\n");
+            stream.write("My second row\n");
+            stream.end();
+        });
+
     });
 
     //When I receive the socket message:

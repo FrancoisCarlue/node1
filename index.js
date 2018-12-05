@@ -54,7 +54,7 @@ module.exports = (logger) => {
             fs.readdir(dir, (err, files) => {
                 numberOfImages=files.length;
                 if (numberOfImages==1){
-                    targetPath = path.join(__dirname, "./uploads/image.jpg"); 
+                    targetPath = path.join(__dirname, "./uploads/image.jpg");
                 }
                 else if(numberOfImages==2){
                     targetPath = path.join(__dirname, "./uploads/image2.jpg"); 
@@ -105,6 +105,16 @@ module.exports = (logger) => {
             
         }
     );
+
+    //reception of text message
+    app.post('/PostText',(req,res) => {
+
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({"Resultat":"text received"}));
+        console.log("text received");
+        
+    });
+
     //When I receive the socket message:
     io.on('refresh-msg', function (socket) {
         console.log(socket);

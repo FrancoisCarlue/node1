@@ -124,6 +124,7 @@ module.exports = (logger) => {
         fs.readFile('postedText.txt', 'utf8', function(err, data) {
             if (err) throw err;
             return res.json('postedText.txt');
+        });
     });
 
     //When I receive the socket message:

@@ -86,7 +86,8 @@
 
 <script>
     $.get('http://node.melisse.ovh1.ec-m.fr/postedText', function(textData, status) {
-        var lines = String(textData).replace(/\"/g,'').split("\n");
+        var extractText = ""+textData;
+        var lines = extractText.replace(/\"/g,'').split("\n");
 
         $.each(lines, function(n, contentLine) {
             $('#textTable').append('<tr>\n <td width="5%"></td>\n <td>' + contentLine + '</td> </tr>');

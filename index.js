@@ -113,11 +113,16 @@ module.exports = (logger) => {
         res.send(JSON.stringify({"Resultat":"text received"}));
         console.log("text received");
 
-        var stream = fs.createWriteStream("postedText.txt");
+        /*var stream = fs.createWriteStream("postedText.txt");
         stream.once('open', function(fd) {
             stream.write("My first row\n");
             stream.write("My second row\n");
             stream.end();
+        });*/
+
+        fs.appendFile('postedText.txt', 'Ligne en plus\n', (err) => {
+            if (err) throw err;
+            console.log('text received');
         });
 
     });

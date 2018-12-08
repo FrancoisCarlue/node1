@@ -108,7 +108,7 @@ module.exports = (logger) => {
 
     //reception of text message
     app.post('/postText',(req,res) => {
-        var receivedText = req.body.textSent;
+        var receivedText = req.body.sentText;
 
         fs.appendFile('postedText.txt', receivedText+"\n", (err) => { //ajout d'une ligne au fichier d'écriture
             if (err) throw err;

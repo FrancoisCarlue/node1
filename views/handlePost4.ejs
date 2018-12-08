@@ -85,7 +85,7 @@
 <img style ="display: block;margin-right: 10px;margin-bottom: 10px;max-height: 100px;max-width: 100px" src="./qrCodes/qrCode1.png"/>
 
 <script>
-    $.get('postedText.txt', function(textData, status) {
+    $.get('http://node.melisse.ovh1.ec-m.fr/postedText', function(textData, status) {
         var lines = textData.split("\n")
 
         alert(textData + '\nStatus = ' + status);

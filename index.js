@@ -119,7 +119,7 @@ module.exports = (logger) => {
         console.log("text received");
     });
 
-    /endpoint to serve postedText content
+    //endpoint to serve postedText content
     app.get('/postedText',(req,res) => {
         fs.readFile('postedText.txt', 'utf8', function(err, data) {
             if (err) throw err;

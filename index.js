@@ -117,7 +117,13 @@ module.exports = (logger) => {
         res.setHeader('Content-Type', 'application/json'); //formulation d'une confirmation
         res.send(JSON.stringify({"Resultat":"text received"}));
         console.log("text received");
+    });
 
+    /endpoint to serve postedText content
+    app.get('/postedText',(req,res) => {
+        fs.readFile('postedText.txt', 'utf8', function(err, data) {
+            if (err) throw err;
+            return res.json('postedText.txt');
     });
 
     //When I receive the socket message:

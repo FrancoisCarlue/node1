@@ -107,23 +107,16 @@ module.exports = (logger) => {
     );
 
     //reception of text message
-    app.post('/PostText',(req,res) => {
+    app.post('/postText',(req,res) => {
+        var receivedText = req.body.textSent;
 
-        res.setHeader('Content-Type', 'application/json');
+        fs.appendFile('postedText.txt', receivedText.contact("\n"), (err) => { //ajout d'une ligne au fichier d'écriture
+            if (err) throw err;
+        });
+
+        res.setHeader('Content-Type', 'application/json'); //formulation d'une confirmation
         res.send(JSON.stringify({"Resultat":"text received"}));
         console.log("text received");
-
-        /*var stream = fs.createWriteStream("postedText.txt");
-        stream.once('open', function(fd) {
-            stream.write("My first row\n");
-            stream.write("My second row\n");
-            stream.end();
-        });*/
-
-        fs.appendFile('postedText.txt', 'Ligne en plus\n', (err) => {
-            if (err) throw err;
-            console.log('text received');
-        });
 
     });
 

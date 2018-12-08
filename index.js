@@ -123,7 +123,7 @@ module.exports = (logger) => {
     app.get('/postedText',(req,res) => {
         fs.readFile('postedText.txt', 'utf8', function(err, data) {
             if (err) throw err;
-            return res.write(data);
+            return res.end(data);
         });
     });
 
